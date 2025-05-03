@@ -1,5 +1,6 @@
 import React from 'react';
 import { AppBar, Toolbar, Typography, Button, Box } from '@mui/material';
+import { Link } from 'react-router-dom';
 
 const Navbar = () => {
   return (
@@ -9,9 +10,13 @@ const Navbar = () => {
           Redux Toolkit Cart
         </Typography>
 
-        <Box>
-          <Button color="inherit">Products</Button>
-          <Button color="inherit">Cart</Button>
+        <Box sx={{ display: 'flex', gap: 2 }}>
+          <Button color="inherit" component={Link} to="/">
+            Products
+          </Button>
+          <Button color="inherit" component={Link} to="/cart">
+            Cart
+          </Button>
         </Box>
       </Toolbar>
     </AppBar>

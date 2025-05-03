@@ -20,16 +20,28 @@ const handleAddProduct = (state, action) => {
     }
 }
 
+const handleRemoveProduct = (state, action) => {
+    const id = action.payload    
+    const isProduct = state.products.findIndex(item => item?.id === id);
+    if(state.products[isProduct].quantity === 1){
+        const products = state.products.filter(item=>item.id !== id)
+        state.products = products
+    }
+    else{
+        state.products[isProduct].quantity-=1;
+    }
+}
+
 const cartSlice = createSlice({
     name:'cart',
     initialState, 
     reducers:{
         addProduct:handleAddProduct,
-        // removeProduct:handleRemoveProduct,
+        removeProduct:handleRemoveProduct,
         // deleteProduct:handleDeleteProduct
     }
 })
 
-export const {addProduct} = cartSlice.actions;
+export const {addProduct, removeProduct} = cartSlice.actions;
 
 export default cartSlice.reducer;

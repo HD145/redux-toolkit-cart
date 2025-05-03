@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { Grid, Card, CardContent, CardMedia, Typography, Button, CircularProgress } from '@mui/material';
+import { Grid, Card, CardContent, CardMedia, Typography, Button, CircularProgress, Box } from '@mui/material';
 import axios from 'axios';
 import { useDispatch, useSelector } from 'react-redux';
 import { addProduct } from '../features/cartSlice';
@@ -28,14 +28,24 @@ const Products = () => {
     handleLoadProducts();
   }, []);
 
-  console.log(carts, "cartscartscarts");
-  
-
   const handleAddProduct = (item)=>{
     dispath(addProduct(item))
   }
 
-  if (loading) return <CircularProgress />;
+  if (loading) {
+  return (
+    <Box
+      sx={{
+        height: '100vh',
+        display: 'flex',
+        justifyContent: 'center',
+        alignItems: 'center',
+      }}
+    >
+      <CircularProgress />
+    </Box>
+  );
+}
 
   return (
     <Grid container spacing={5} p={3}>
