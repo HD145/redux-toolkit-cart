@@ -2,10 +2,18 @@ import React from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { Button, Typography, Box, Divider } from '@mui/material';
 import { addProduct, removeProduct } from '../features/cartSlice';
+import useCartStore from '../app/zustStore';
 
 const Cart = () => {
   const products = useSelector((state) => state.cart.products);
   const dispatch = useDispatch();
+
+  //zustand impl
+
+  const {cart} = useCartStore();
+
+  console.log(cart, "cartStore");
+  
   return (
     <Box sx={{ p: 4 }}>
      

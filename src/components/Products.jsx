@@ -3,6 +3,7 @@ import { Grid, Card, CardContent, CardMedia, Typography, Button, CircularProgres
 import axios from 'axios';
 import { useDispatch, useSelector } from 'react-redux';
 import { addProduct } from '../features/cartSlice';
+import useCartStore from '../app/zustStore';
 
 const Products = () => {
   const [products, setProducts] = useState([]);
@@ -11,6 +12,10 @@ const Products = () => {
   const carts = useSelector(state => state.products)
 
   const dispath = useDispatch();
+
+  //zustand impl
+
+  const {addToCart} = useCartStore();
 
   const handleLoadProducts = async()=>{
     setLoading(true)
@@ -29,6 +34,7 @@ const Products = () => {
   }, []);
 
   const handleAddProduct = (item)=>{
+    addToCart(item);
     dispath(addProduct(item))
   }
 
