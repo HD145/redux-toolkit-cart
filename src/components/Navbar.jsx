@@ -17,6 +17,9 @@ const Navbar = () => {
           <Button color="inherit" component={Link} to="/cart">
             Cart
           </Button>
+          <Button color="inherit" component={Link} to="/lazyLoad">
+            Lazy Load Sample
+          </Button>
         </Box>
       </Toolbar>
     </AppBar>

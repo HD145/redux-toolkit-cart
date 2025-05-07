@@ -8,6 +8,7 @@ import {store, persistor } from './app/store'
 import { BrowserRouter, Route, Routes } from 'react-router-dom'
 import Cart from './components/Cart'
 import { PersistGate } from 'redux-persist/integration/react'
+import { LazyLoadComps } from './components/LazyLoadComps'
 // import './App.css'
 
 function App() {
@@ -21,6 +22,7 @@ function App() {
             <Routes>
               <Route path="/" element={<Products />} />
               <Route path="/cart" element={<Cart />} />
+              <Route path="/lazyLoad" element={<LazyLoadComps />} />
             </Routes>
           </BrowserRouter>
         </PersistGate>

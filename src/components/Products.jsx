@@ -5,9 +5,9 @@ import { useDispatch, useSelector } from 'react-redux';
 import { addProduct } from '../features/cartSlice';
 import useCartStore from '../app/zustStore';
 
-const Products = () => {
+const Products = ({lazyFlag = true}) => {
   const [products, setProducts] = useState([]);
-  const [loading, setLoading] = useState(true);
+  const [loading, setLoading] = useState(lazyFlag);
 
   const carts = useSelector(state => state.products)
 
@@ -18,7 +18,7 @@ const Products = () => {
   const {addToCart} = useCartStore();
 
   const handleLoadProducts = async()=>{
-    setLoading(true)
+    // setLoading(true)
     try{
         const data = await axios.get("https://fakestoreapi.com/products");
         setProducts(data?.data ?? [])
